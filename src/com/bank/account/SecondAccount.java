@@ -19,9 +19,9 @@ public class SecondAccount {
 			 
 			 String accountInput = sc.nextLine();
 			  // 유효성 검사 코드
-	            if (!accountInput.matches("[1-3]")) { // 입력이 1~3 또는 0인 경우
-	                System.out.println("잘못된 입력입니다. 1~3 사이의 숫자를 입력해주세요.");
-	                continue; // 다시 메뉴를 출력하고 입력 받음
+			 if (!InputValidator.isValidOption(accountInput, 0, 3)) { // 입력 검증
+	                System.out.println("잘못된 입력입니다. 0~3 사이의 숫자를 입력해주세요.");
+	                continue;
 	            }
 	         
 			 

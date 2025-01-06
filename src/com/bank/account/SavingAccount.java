@@ -2,6 +2,8 @@ package com.bank.account;
 
 import java.util.Scanner;
 
+import com.bank.repository.BankDAO;
+
 public class SavingAccount {
 
     public static void savingAccount() {
@@ -10,7 +12,8 @@ public class SavingAccount {
         boolean loop = true;
 
         while (loop) {
-            System.out.println("1.저축 통장 개설");
+      
+            System.out.println("1.예금 통장 개설");
             System.out.println("------------------");
             System.out.println("계좌에 사용하실 비밀번호 숫자 4자리를 입력해주세요.(로그인 시 비밀번호와 다릅니다.)");
             System.out.print("비밀번호:");
@@ -27,9 +30,9 @@ public class SavingAccount {
                     // Y 또는 N만 입력 받음
                     if (makeAccount.equalsIgnoreCase("Y")) {
                     	System.out.println();
-                        System.out.println("%s님의 계좌가 개설이 완료되었습니다.");
+                        System.out.println("홍길동 님의 계좌가 개설이 완료되었습니다.");
                         System.out.println();
-                        System.out.println("계좌번호는 땡떙땡-입니다.");
+                        // 저장된 파일 입출력 값 불러오기
                         System.out.println();
                         break;  // 계좌 개설 완료 후 루프 종료
                     } else if (makeAccount.equalsIgnoreCase("N")) {

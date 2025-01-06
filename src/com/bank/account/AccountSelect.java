@@ -17,11 +17,10 @@ public class AccountSelect {
             String accountInput = sc.nextLine();
 
             // 유효성 검사 코드
-            if (!accountInput.matches("[0-3]")) { // 입력이 1~3 또는 0인 경우
+            if (!InputValidator.isValidOption(accountInput, 0, 3)) { // 입력 검증
                 System.out.println("잘못된 입력입니다. 0~3 사이의 숫자를 입력해주세요.");
-                continue; // 다시 메뉴를 출력하고 입력 받음
+                continue;
             }
-
             switch (accountInput) {
                 case "1":
                 	System.out.println();
@@ -29,9 +28,6 @@ public class AccountSelect {
                     // 계좌 조회 로직 호출
                     break;
                 case "2":
-                	System.out.println();
-                    System.out.println("▶ 계좌 개설을 합니다. ◀");
-                    System.out.println();
                     AccountCreate.createAccount(); // 계좌 개설 로직 호출
                     break;
                 case "3":
