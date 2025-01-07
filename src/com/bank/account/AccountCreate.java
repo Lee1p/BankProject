@@ -2,8 +2,15 @@ package com.bank.account;
 
 import java.util.Scanner;
 
+import com.bank.customer.Customer;
+import com.bank.repository.BankDAO;
+import com.bank.util.InputValidator;
+
 public class AccountCreate {
 	 public static void createAccount() {
+		 
+		 
+		 Customer customer = BankDAO.customertList.get(2);
 		 
 		 Scanner sc = new  Scanner(System.in);
 		 
@@ -11,7 +18,7 @@ public class AccountCreate {
 		 
 		 while(loop) {
 			 
-			 System.out.println("▶ 계좌 개설을 합니다. ◀");
+			 System.out.println("▶ 계좌 개설 ◀");
 			 System.out.println();
 			 
 			 System.out.println("1.예금 통장 개설");
@@ -29,7 +36,7 @@ public class AccountCreate {
 			 switch (accountInput) {
              case "1":
              	 System.out.println();
-                 SavingAccount.savingAccount();// 예금 통장 개설 로직 호출 
+                 FirstAccount.firstAccount(customer);// 예금 통장 개설 로직 호출 
                  break;
              case "2":
              	System.out.println();

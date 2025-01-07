@@ -1,4 +1,4 @@
-package com.bank.account;
+package com.bank.util;
 
 public class InputValidator {
     public static boolean isValidOption(String input, int min, int max) {
