@@ -15,11 +15,11 @@ public class AccountCreate {
         boolean loop = true;
 
         while (loop) {
-            System.out.println("▶ 계좌 개설 ◀");
-            System.out.println();
-            System.out.println("1. 예금 통장 개설");
+            System.out.println("   ▼ 계좌 개설 ▼");
+            System.out.println("1. 일반 통장 개설");
             System.out.println("2. 적금 통장 개설");
             System.out.println("0. 이전");
+            System.out.println("====================");
             System.out.print("선택: ");
 
             String accountInput = sc.nextLine();

@@ -12,12 +12,16 @@ public class AccountSelect {
         boolean loop = true;
 
         while (loop) {
+        	System.out.println("=================");
             System.out.println("1. 계좌 개설");
             System.out.println("2. 계좌 조회");
             System.out.println("3. 계좌 해지");
             System.out.println("0. 이전으로");
+            System.out.println("=================");
             System.out.print("선택:");
-
+            
+            
+            
             String accountInput = sc.nextLine();
 
             // 유효성 검사 코드
@@ -34,14 +38,15 @@ public class AccountSelect {
                     break;
                 case "2":
                     // 계좌 조회
-                    System.out.println("계좌 조회");
-                    // 계좌 조회 로직을 추가 해야함
-   
+                   
+                    AccountView accountView = new AccountView(); // 계좌 조회 클래스를 호출
+                    accountView.showAccountList(); // 계좌 목록 출력 메서드 호출
                     break;
                 case "3":
-                    // 계좌 해지
-                    System.out.println("계좌 해지");
-                    // 계좌 해지 로직을 추가하려면 객체를 생성하여 메서드를 호출
+                	// 계좌 해지 
+                    AccountDelete accountDelete = new AccountDelete();
+                    accountDelete.accountDelete();
+                           
                     break;
                 case "0":
                     // 이전 메뉴로 돌아가기

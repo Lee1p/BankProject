@@ -20,6 +20,7 @@ public class Account {
 	private String balance; // 잔액
 	private String typeOfAccount;
 	
+	
 	//거래내역
 	private List<AccountHistory> accountAccountHistoryList;
 	//적금통장 구분
@@ -122,6 +123,8 @@ public class Account {
 	public void setTypeOfAccount(String typeOfAccount) {
 		this.typeOfAccount = typeOfAccount;
 	}
+	
+	
 
 	@Override
 	public String toString() {
