@@ -21,8 +21,20 @@ public class Main {
 //        }
 //		
 		
+//		for (Customer c : BankDAO.)
+		
+		Customer customer = null;
+		
 		//계좌
-		AccountSelect.Accountdisplay();
+		for (Customer c : BankDAO.customertList) {
+			if (c.getNo().equals("1")) {
+				User.setUser(c);
+			}
+		}
+		
+		//계좌 목록 불러오기
+		AccountSelect accountSelect = new AccountSelect();
+		accountSelect.accountDisplay();
 		
 		
 		BankDAO.save();
