@@ -23,7 +23,7 @@ public class Main {
 		
 //		for (Customer c : BankDAO.)
 		
-		Customer customer = null;
+//		Customer customer = null;
 		
 		//계좌
 		for (Customer c : BankDAO.customertList) {
@@ -32,17 +32,18 @@ public class Main {
 			}
 		}
 		
+		
 		//계좌 목록 불러오기
 		AccountSelect accountSelect = new AccountSelect();
 		accountSelect.accountDisplay();
-	
+		
+		
 		
 		
 		BankDAO.save();
 		
-	}
+	}	//main
+	
+} // class
 
-	
-		
-	
-}
+

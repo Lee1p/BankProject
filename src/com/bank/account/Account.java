@@ -12,13 +12,13 @@ import com.bank.savingaccount.SavingAccount;
 
 public class Account {
 
-	private String no;
-	private String accountNumber;
-	private String password;
-	private String cusutomerNo;
-	private String openDate;
+	private String no; // 계좌 고유번호
+	private String accountNumber; // 계좌번호
+	private String password; // 비밀번호
+	private String cusutomerNo; // 회원고유번호
+	private String openDate; // 날짜 
 	private String balance; // 잔액
-	private String typeOfAccount;
+	private String typeOfAccount; // 타입 일반 (0) , 적금(1)
 	
 	
 	//거래내역

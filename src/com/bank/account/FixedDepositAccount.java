@@ -42,77 +42,76 @@ public class FixedDepositAccount {
 	public FixedDepositAccount() {
 		// 초기화 작업이 필요하면 여기에 추가
 	}
-
-	// 적금 통장 개설 메서드
+	// 기존 코드 유지
 	public void fixedDepositAccount() {
-		Scanner sc = new Scanner(System.in);
+	    Scanner sc = new Scanner(System.in);
 
-		System.out.println("2. 적금 통장 개설");
-		System.out.println("------------------");
-		System.out.println("●1. 12개월 5%");
-		System.out.println("●2. 24개월 10%");
-		System.out.println("●3. 36개월 15%");
-		System.out.print("가입 상품 선택: ");
+	    System.out.println("2. 적금 통장 개설");
+	    System.out.println("------------------");
+	    System.out.println("●1. 12개월 5%");
+	    System.out.println("●2. 24개월 10%");
+	    System.out.println("●3. 36개월 15%");
+	    System.out.print("가입 상품 선택: ");
 
-		String accountInput = sc.nextLine();
+	    String accountInput = sc.nextLine();
 
-		// 유효성 검사 코드
-		if (!InputValidator.isValidOption(accountInput, 1, 3)) {
-			System.out.println("잘못된 입력입니다. 1~3 사이의 숫자를 입력해주세요.");
-			return;
-		}
+	    // 유효성 검사 코드
+	    if (!InputValidator.isValidOption(accountInput, 1, 3)) {
+	        System.out.println("잘못된 입력입니다. 1~3 사이의 숫자를 입력해주세요.");
+	    }
 
-		// 상품 정보 설정
-		switch (accountInput) {
-		case "1":
-			this.term = "12"; // 12개월 상품
-			this.interestRate = "5"; // 5% 이자율
-			this.maxAmount = 1000000; // 최대 한도 100만원
-			break;
-		case "2":
-			this.term = "24"; // 24개월 상품
-			this.interestRate = "10"; // 10% 이자율
-			this.maxAmount = 3000000; // 최대 한도 300만원
-			break;
-		case "3":
-			this.term = "36"; // 36개월 상품
-			this.interestRate = "15"; // 15% 이자율
-			this.maxAmount = 5000000; // 최대 한도 500만원
-			break;
-		}
+	    // 상품 정보 설정
+	    switch (accountInput) {
+	    case "1":
+	        this.term = "12"; // 12개월 상품
+	        this.interestRate = "5"; // 5% 이자율
+	        this.maxAmount = 1000000; // 최대 한도 100만원
+	        break;
+	    case "2":
+	        this.term = "24"; // 24개월 상품
+	        this.interestRate = "10"; // 10% 이자율
+	        this.maxAmount = 3000000; // 최대 한도 300만원
+	        break;
+	    case "3":
+	        this.term = "36"; // 36개월 상품
+	        this.interestRate = "15"; // 15% 이자율
+	        this.maxAmount = 5000000; // 최대 한도 500만원
+	        break;
+	    }
 
-		System.out.printf("가입 상품:%s개월 이자율:%s%%\n", term, interestRate);
+	    System.out.printf("가입 상품:%s개월 이자율:%s%%\n", term, interestRate);
 
-		// 금액 입력
-		getAmountInput(sc);
+	    // 금액 입력
+	    getAmountInput(sc);
 
-		// 납부일 선택
-		getPaymentDateInput(sc);
+	    // 납부일 선택
+	    getPaymentDateInput(sc);
 
-		// 계좌 비밀번호 입력받기
-		this.passwordInput = PasswordValidator.getPasswordInput(sc);
+	    // 계좌 비밀번호 입력받기
+	    this.passwordInput = PasswordValidator.getPasswordInput(sc);
 
-		// 계좌 번호 생성
-		this.accountNumber = generateAccountNumber();
-		System.out.println("계좌번호: " + accountNumber);
+	    // 계좌 번호 생성
+	    this.accountNumber = generateAccountNumber();
+	    System.out.println("계좌번호: " + accountNumber);
 
-		// 현재 날짜 가져오기
-		this.openDateString = java.time.LocalDate.now().toString();
+	    // 현재 날짜 가져오기
+	    this.openDateString = java.time.LocalDate.now().toString();
 
-		// 고유번호 얻기
-		this.no = getNextAccountNo();
+	    // 고유번호 얻기
+	    this.no = getNextAccountNo();
 
-		// 계좌 생성 및 저장
-		createAndSaveAccount();
+	    // 계좌 생성 및 저장
+	    createAndSaveAccount();
 
-		// Enter 키를 눌러 메인화면으로 돌아가기
-		System.out.println("Enter키를 눌러 메인화면으로 이동합니다.");
-		sc.nextLine(); // 사용자 입력을 기다림
+	    // Enter 키를 눌러 메인화면으로 돌아가기
+	    System.out.println("Enter키를 눌러 메인화면으로 이동합니다.");
+	    sc.nextLine(); // 사용자 입력을 기다림
 
-		// 메인 화면으로 돌아가기
-		AccountSelect accountSelect = new AccountSelect();
-		accountSelect.accountDisplay(); // 메인 메뉴를 다시 호출
+	    // 여기서 메인 메뉴로 돌아가도록 변경
+	    AccountSelect accountSelect = new AccountSelect();
+	    accountSelect.accountDisplay(); // 메인 메뉴를 다시 호출
 	}
+
 
 	// 금액 입력 받는 메서드
 	private void getAmountInput(Scanner sc) {
@@ -186,7 +185,7 @@ public class FixedDepositAccount {
 				this.openDateString, String.valueOf(this.amount), "1",null ,null ,null);
 
 		// 적금 상품 저장 (회원, 상품선택, 이자율)
-		SavingAccount savingAccount = new SavingAccount(User.getUser().getNo(), this.term, this.interestRate);
+		SavingAccount savingAccount = new SavingAccount(this.no, this.term, this.interestRate);
 		BankDAO.savingAccountList.add(savingAccount);
 
 		BankDAO.save(); // 계좌 및 상품 정보 파일에 저장

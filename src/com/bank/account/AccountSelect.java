@@ -20,9 +20,9 @@ public class AccountSelect {
             System.out.println("=================");
             System.out.print("선택:");
             
-            
-            
+
             String accountInput = sc.nextLine();
+            
 
             // 유효성 검사 코드
             if (!InputValidator.isValidOption(accountInput, 0, 3)) { // 입력 검증
@@ -56,7 +56,7 @@ public class AccountSelect {
             }
         }
 
-        sc.close();
+        
     }  // accountDisplay
 
 }  // AccountSelect

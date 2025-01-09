@@ -2,8 +2,6 @@ package com.bank.util;
 
 import java.util.Scanner;
 
-import com.bank.account.Account;
-import com.bank.repository.BankDAO;
 
 public class PasswordValidator {
 		
@@ -23,8 +21,9 @@ public class PasswordValidator {
             }
         }
         return passwordInput;
-    
+        
     }//main
-    
+   
+  
 }//class
 	
