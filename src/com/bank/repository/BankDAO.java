@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.bank.account.Account;
 import com.bank.accounthistory.AccountHistory;
 import com.bank.card.Card;
+import com.bank.card.CardProduct;
 import com.bank.countrymoneylist.CountryMoneyList;
 import com.bank.customer.Customer;
 import com.bank.savingaccount.SavingAccount;
@@ -19,6 +20,7 @@ public class BankDAO {
 	private final static String account;
 	private final static String accounthistory;
 	private final static String card;
+	private final static String cardproduct;
 	private final static String countrymoneyhistory;
 	private final static String customer;
 	private final static String savingaccount;
@@ -28,6 +30,7 @@ public class BankDAO {
 	public static ArrayList<Account> accountList;
 	public static ArrayList<AccountHistory> accountHistoryList;
 	public static ArrayList<Card> cardList;
+	public static ArrayList<CardProduct> cardProductList;
 	public static ArrayList<CountryMoneyList> countryMoneyListList;
 	public static ArrayList<SavingAccount> savingAccountList;
 	
@@ -35,6 +38,7 @@ public class BankDAO {
 		account = ".\\data\\account.txt";
 		accounthistory = ".\\data\\accounthistory.txt";
 		card = ".\\data\\card.txt";
+		cardproduct = ".\\data\\cardproduct.txt";
 		countrymoneyhistory = ".\\data\\countrymoneylist.txt";
 		customer = ".\\data\\customer.txt";
 		savingaccount = ".\\data\\savingaccount.txt";
@@ -43,6 +47,7 @@ public class BankDAO {
 		accountList = new ArrayList<Account>();
 		accountHistoryList = new ArrayList<AccountHistory>();
 		cardList = new ArrayList<Card>();
+		cardProductList = new ArrayList<CardProduct>();
 		countryMoneyListList = new ArrayList<CountryMoneyList>();
 		savingAccountList = new ArrayList<SavingAccount>();
 	}
@@ -61,7 +66,7 @@ public class BankDAO {
 				String[] temp = line.split("●");
 				
 				Account account = new Account(
-								temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6] , null , null ,null);
+								temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6], null, null, null);
 				
 				accountList.add(account);
 			}//while
@@ -120,14 +125,32 @@ public class BankDAO {
 			reader = new BufferedReader(new FileReader(card));
 			while ((line = reader.readLine()) != null) {
 				
-				//1●1234-4356-1234-1234●1234●1●0
-				//고유번호 ● 카드번호 ● 비밀번호 ● 계좌고유번호 ● 연회비
+				//1			● 1234-4356-1234-1234	●1234		●1				●0		● 3000000	●2024-01-01
+				//고유번호	● 카드번호				● 비밀번호	● 계좌고유번호	● 연회비	● 월한도		● 개설날자
 				
 				String[] temp = line.split("●");
 				
-				Card card = new Card(temp[0], temp[1], temp[2], temp[3], temp[4]);
+				
+				Card card = new Card(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6]);
 				
 				cardList.add(card);
+			}//while
+			reader.close();
+			//카드목록 담기
+			//계좌에 카드목록 담아야함
+			
+			reader = new BufferedReader(new FileReader(cardproduct));
+			while ((line = reader.readLine()) != null) {
+				
+				//2●S-클래스 카드●7771●200000●100000000
+				//고유번호●카드명●카드번호첫자리●연회비●결제한도
+				
+				String[] temp = line.split("●");
+				
+				
+				CardProduct cardProduct = new CardProduct(temp[0], temp[1], temp[2], temp[3], temp[4]);
+				
+				cardProductList.add(cardProduct);
 			}//while
 			reader.close();
 			//카드목록 담기
@@ -180,12 +203,14 @@ public class BankDAO {
 						account.getAccountCardList().add(c);
 					}
 				}
+
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	
 	
@@ -239,16 +264,31 @@ public class BankDAO {
 			}
 			writer.close();
 			
-			//1●1234-4356-1234-1234●1234●1●0
-			//고유번호 ● 카드번호 ● 비밀번호 ● 계좌고유번호 ● 연회비
+			//1			● 1234-4356-1234-1234	●1234		●1				●0		● 3000000	●2024-01-01
+			//고유번호	● 카드번호				● 비밀번호	● 계좌고유번호	● 연회비	● 월한도		● 개설날자
 			writer = new BufferedWriter(new FileWriter(card));
 			for (Card card : cardList) {
-				writer.write(String.format("%s●%s●%s●%s●%s\r\n"
+				writer.write(String.format("%s●%s●%s●%s●%s●%s●%s\r\n"
 						, card.getNo()
 						, card.getCardNumber()
 						, card.getPassword()
 						, card.getAccountNo()
-						, card.getAnnualFee()));
+						, card.getAnnualFee()
+						, card.getLimit()
+						, card.getCreateDay()));
+			}
+			writer.close();
+			
+			//2●S-클래스 카드●7771●200000●100000000
+			//고유번호●카드명●카드번호첫자리●연회비●결제한도
+			writer = new BufferedWriter(new FileWriter(cardproduct));
+			for (CardProduct cardproduct : cardProductList) {
+				writer.write(String.format("%s●%s●%s●%s●%s\r\n"
+						, cardproduct.getNo()
+						, cardproduct.getCardName()       
+						, cardproduct.getFirstCardNumber()
+						, cardproduct.getAnnualFee()  
+						, cardproduct.getLimit()));
 			}
 			writer.close();
 			

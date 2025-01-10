@@ -2,6 +2,7 @@ package com.bank.account;
 
 import java.util.Scanner;
 
+import com.bank.function.signin.Signin;
 import com.bank.util.InputValidator;
 
 public class AccountSelect {
@@ -12,13 +13,13 @@ public class AccountSelect {
         boolean loop = true;
 
         while (loop) {
-        	System.out.println("=================");
+        	System.out.println("===================================================");
             System.out.println("1. 일반 통장 개설");
             System.out.println("2. 적금 통장 개설");
             System.out.println("3. 계좌 조회");
             System.out.println("4. 계좌 해지");
-            System.out.println("0. 이전으로");
-            System.out.println("=================");
+            System.out.println("0. 메뉴");
+            System.out.println("===================================================");
             System.out.print("선택:");
             
 
@@ -58,7 +59,7 @@ public class AccountSelect {
                 case "0":
                 	//이전 메뉴로 돌아가기
                 	 System.out.println("첫 메뉴로 돌아갑니다.");
-                	 //여기에 메인페이지를 호출하는 클래스를 작성
+                	 Signin.mainMenu();//여기에 메인페이지를 호출하는 클래스를 작성
                      loop = false;
                      break;
             }

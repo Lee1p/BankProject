@@ -37,7 +37,11 @@ public class AccountDelete {
 
 	// 계좌 목록 출력
 	private void displayAccounts(List<Account> accounts) {
-		System.out.println("==============계좌 목록==============");
+		for (int i=0; i<30; i++) {
+			System.out.println();
+		}
+		System.out.println("===================================================");
+		System.out.println("			계좌 목록");
 		int index = 1;
 		for (Account account : accounts) {
 			String balance = String.format("%,d", Integer.parseInt(account.getBalance()));
@@ -150,7 +154,8 @@ public class AccountDelete {
 
 			// 자신에게 송금하려는 경우
 			if (transferAccount.getAccountNumber().equals(selectedAccount.getAccountNumber())) {
-				System.out.println("=====자신의 계좌로는 송금 못합니다.======");
+				System.out.println("===================================================");
+				System.out.println("		자신의 계좌로는 송금 못합니다.");
 				return;
 			}
 

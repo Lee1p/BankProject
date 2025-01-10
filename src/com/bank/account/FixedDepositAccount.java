@@ -47,7 +47,7 @@ public class FixedDepositAccount {
 	    Scanner sc = new Scanner(System.in);
 
 	    System.out.println("2. 적금 통장 개설");
-	    System.out.println("------------------");
+	    System.out.println("===================================================");
 	    System.out.println("●1. 12개월 5%");
 	    System.out.println("●2. 24개월 10%");
 	    System.out.println("●3. 36개월 15%");

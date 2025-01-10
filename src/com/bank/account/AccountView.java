@@ -24,8 +24,12 @@ public class AccountView {
 			System.out.println("계좌가 없습니다.");
 			return;
 		}
-
-		System.out.println("===============계좌 조회===========");
+		for (int i=0; i<30; i++) {
+			System.out.println();
+		}
+		System.out.println("===================================================");
+		System.out.println("			계좌 조회");
+		System.out.println("===================================================");
 		// 계좌 목록 출력
 		int accountNumber = 1;
 		for (Account account : userAccounts) {
@@ -43,8 +47,11 @@ public class AccountView {
 	private void selectAccount(List<Account> userAccounts) {
 		boolean loop = true;
 		Scanner sc = new Scanner(System.in);
+		for (int i=0; i<30; i++) {
+			System.out.println();
+		}
 
-		System.out.println("================================");
+		System.out.println("===================================================");
 		while (loop) {
 			System.out.print("◆계좌 내역 선택(0.이전): ");
 			String viewSelect = sc.nextLine();
@@ -65,9 +72,9 @@ public class AccountView {
 			System.out.printf("선택하신 계좌: %s %s %s Won\n", selectedAccount.getTypeOfAccount().equals("0") ? "일반" : "적금",
 					selectedAccount.getAccountNumber(), balance);
 			
-			System.out.println("---------------------------------------------");
+			System.out.println("===================================================");
 			showAccountHistoryList();
-			System.out.println("---------------------------------------------");
+			System.out.println("===================================================");
 
 
 		}
