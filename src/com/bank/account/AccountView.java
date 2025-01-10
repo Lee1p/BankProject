@@ -64,9 +64,11 @@ public class AccountView {
 			String balance = String.format("%,d", Integer.parseInt(selectedAccount.getBalance()));
 			System.out.printf("선택하신 계좌: %s %s %s Won\n", selectedAccount.getTypeOfAccount().equals("0") ? "일반" : "적금",
 					selectedAccount.getAccountNumber(), balance);
-
+			
 			System.out.println("---------------------------------------------");
 			showAccountHistoryList();
+			System.out.println("---------------------------------------------");
+
 
 		}
 	}
@@ -78,13 +80,25 @@ public class AccountView {
 		int accountNumber = 1;
 		for (AccountHistory accounthistory : BankDAO.accountHistoryList) {
 			String balnace = String.format("%,d", Integer.parseInt(accounthistory.getValue()));
-			System.out.printf("●%d. Won %s %s %s %s\n", accountNumber++, balnace, accounthistory.getName(),
+			System.out.printf("●%d. %s Won %s %s %s\n", accountNumber++, balnace, accounthistory.getName(),
 					accounthistory.getTypeOfInOUt().equals("0") ? "입금" : "출금",  accounthistory.getTransactionDate());
 		}
 
 	}
 	
-	
+	public void showAccountDeposit() {
+		
+		int accountNumber = 1;
+		for (AccountHistory accounthistory : BankDAO.accountHistoryList) {
+			String balnace = String.format("%,d", Integer.parseInt(accounthistory.getValue()));
+			 String typeOfTransaction = accounthistory.getTypeOfInOUt().equals("0") ? "입금" : accounthistory.getTypeOfInOUt();
+			if(accounthistory.getTypeOfInOUt().equals("0")) {
+				System.out.printf("●%d. %s Won %s %s %s\n", accountNumber++, balnace , accounthistory.getName(),
+						typeOfTransaction,accounthistory.getTransactionDate());
+			}
+		}
+		
+	}
 
 	// 로그인된 사용자 번호에 해당하는 계좌만 반환하는 메서드
 	private List<Account> getAccountsByUserNo(String userNo) {

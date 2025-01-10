@@ -106,10 +106,7 @@ public class FixedDepositAccount {
 	    // Enter 키를 눌러 메인화면으로 돌아가기
 	    System.out.println("Enter키를 눌러 메인화면으로 이동합니다.");
 	    sc.nextLine(); // 사용자 입력을 기다림
-
-	    // 여기서 메인 메뉴로 돌아가도록 변경
-	    AccountSelect accountSelect = new AccountSelect();
-	    accountSelect.accountDisplay(); // 메인 메뉴를 다시 호출
+	    
 	}
 
 

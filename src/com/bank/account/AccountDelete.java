@@ -127,14 +127,16 @@ public class AccountDelete {
 		Scanner sc = new Scanner(System.in);
 
 		Account transferAccount = null;
+		boolean loop = true;
 
 		// 계좌번호가 유효할 때까지 반복
-		while (true) {
+		while (loop) {
 			System.out.print("남은 금액을 송금하실 계좌를 입력해주세요.\n계좌번호(0.이전): ");
 			String transferAccountNumber = sc.nextLine(); // 사용자 입력 계좌번호 그대로 사용
 			
-			if(transferAccountNumber.equals("0")) {
-				return;
+			if ("0".equals(transferAccountNumber)) {
+				loop = false;
+				break;
 			}
 
 			// 계좌번호를 통해 계좌 찾기

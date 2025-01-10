@@ -6,6 +6,8 @@ import com.bank.util.PasswordValidator;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class DepositAccount {
 
@@ -53,11 +55,11 @@ public class DepositAccount {
 		}
 
 		System.out.println("계좌 개설이 완료되었습니다. 계좌번호: " + this.accountNumber + ", 개설일: " + this.openDate);
+		
+		// Enter 키를 눌러 메인화면으로 돌아가기
+	    System.out.println("Enter키를 눌러 메인화면으로 이동합니다.");
+	    sc.nextLine(); // 사용자 입력을 기다림
 
-
-		// 메인 화면으로 돌아가기
-		AccountSelect accountselect = new AccountSelect();
-		accountselect.accountDisplay(); // 메인 메뉴를 다시 호출
 	}
 
 	// 잔액 입력받기 (숫자만 입력받고, 최대 1000만 원까지 유효성 검사)
@@ -84,27 +86,19 @@ public class DepositAccount {
 		return balance;
 	}
 
-	// 계좌 번호 생성
+	// 계좌 번호 생성 (Set을 사용하여 중복 확인 최적화)
 	private String generateAccountNumber() {
-		String accountNumber;
-		boolean duplication;
+	    String accountNumber;
+	    Set<String> existingAccountNumbers = BankDAO.accountList.stream()
+	            .map(Account::getAccountNumber)
+	            .collect(Collectors.toSet());
 
-		do {
-			// 중복검사
-			accountNumber = "111-431-" + String.format("%06d", (int) (Math.random() * 1000000));
+	    do {
+	        accountNumber = "111-431-" + String.format("%06d", (int) (Math.random() * 1000000));
+	    } while (existingAccountNumbers.contains(accountNumber));
 
-			duplication = false;
-
-			for (Account account : BankDAO.accountList) {
-				if (account.getAccountNumber().equals(accountNumber)) {
-					duplication = true; // 중복
-				}
-			}
-		} while (duplication);
-
-		return accountNumber;
+	    return accountNumber;
 	}
-
 	// 고유번호 생성 (추후에 실제 회원으로 바뀔예정)
 	private String getNextAccountNo() {
 		String no2 = "1"; // 예시로 고정값 사용
