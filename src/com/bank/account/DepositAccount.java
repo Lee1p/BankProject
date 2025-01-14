@@ -8,7 +8,20 @@ import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
-
+/**
+ *  일반 계좌를 개설을 하는 클래스입니다.
+ * 	<Br>
+ * 	1. 일반 계좌를 개설하는 기능을 제공합니다.
+ * 	<br>
+ * 	- 사용자 입력을 받아 계좌 비밀번호를 입력받고 잔액을 설정하고 계좌를 개설합니다. 
+ * <br>
+ *  - 생성된 계좌 정보를 저장합니다.
+ *  
+ * 	@author 이재현 
+ * 	@version 1.0
+ *  @since 2025. 01. 12
+ * 
+ */
 public class DepositAccount {
 
 	private String accountNumber; // 계좌번호
@@ -20,7 +33,32 @@ public class DepositAccount {
 	public DepositAccount() {
 		// 초기화
 	}
-
+/**
+ * 예금 계좌를 개설하는 메소드
+ * 
+ * 이 메서드는 사용자로부터 필요한 정보를 입력받아 새 예금 계좌를 생성
+ * <p>
+ * 이를 시스템 및 파일에 저장합니다.
+ * </p>
+ * 
+ * 1. 사용자가 계좌 비밀번호를 입력합니다.
+ * 2. 고유한 계좌 번호를 생성합니다.
+ * 3. 초기 입금 금액을 입력받습니다.
+ * 4. 현재 날짜를 가져와 계좌 개설일로 설정합니다.
+ * 5. 고유번호를 얻어 새로운 계좌 객체를 생성합니다.
+ * 6. 새 계좌 객체를 계좌 리스트에 추가합니다.
+ * 7. 새 계좌 정보를 파일에 저장합니다.
+ * 
+ * <h3> 순서 <h3>
+ * 1. 계좌 비밀번호를 입력받아 저장.  
+ * 2. 고유한 계좌 번호를 생성.  
+ * 3. 초기 잔액을 입력받아 저장.  
+ * 4. 현재 날짜를 가져와 개설일로 설정.  
+ * 5. 고유번호를 얻어 새로운 계좌 객체를 생성.  
+ * 6. 계좌 객체를 리스트와 파일에 저장.  
+ * 7. 계좌 개설 완료 메시지 출력.  
+ * 
+ */
 	// 계좌 개설 메서드
 	public void depositAccount() {
 		Scanner sc = new Scanner(System.in);

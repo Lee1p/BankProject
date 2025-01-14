@@ -1,0 +1,28 @@
+1차 데이터
+customer.txt
+예시) 1●홍길동●hgd2352●rlfehd11●010-1211-2352●2023-01-01
+//no ● name ● id ● password ● phoneNumber ● openDate
+
+customer의 2차 데이터
+
+countrtymoneylist.txt
+예시) 1●2000●50000●3000●3000
+//no(customer의 no참조) ● dollar ● euro ● yen ● yuan
+
+account.txt
+예시) 1●110-431-121445●1234●1●2025-01-01●10000000●0
+//no ● accountNumber ● password ● no(customer의 no참조) ● openDate ● balance ● typeOfAccount
+
+customer의 3차 데이터이자 account의 2차데이터
+card.txt
+예시) 1●1234-4356-1234-1234●1234●1●0●3000000●2024-01-01
+//  no ●cardNumber●password●no(account의 no참조)●annualFee ● limit ● createDay
+
+accounthistory.txt
+예시) 1●2025-01-01●10000●1●1●김개똥
+// no ● transactionDate ● value ●  typeOfInOut ● no(account의 no참조) ● name
+
+savingaccount.txt
+예시) 11●12●5
+// no(account의 no참조) ● month ● interest
+

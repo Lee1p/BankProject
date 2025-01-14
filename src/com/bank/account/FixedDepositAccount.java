@@ -1,6 +1,8 @@
 package com.bank.account;
 
 import com.bank.User;
+
+
 import com.bank.repository.BankDAO;
 import com.bank.savingaccount.SavingAccount;
 import com.bank.util.InputValidator;
@@ -8,6 +10,21 @@ import com.bank.util.PasswordValidator;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
+
+/**
+ *  적금 계좌를 개설을 하는 클래스입니다.
+ * 	<Br>
+ * 	1. 적금 계좌를 개설하는 기능을 제공합니다.
+ * 	<br>
+ * 	- 사용자 입력을 받아 적금 상품을 선택하고 금액을 설정합니다.
+ * <br>
+ *  - 생성된 계좌 정보를 저장합니다.
+ * 	@author 이재현 
+ * 	@version 1.0
+ *  @since 2025. 01. 12
+ * 
+ */
+
 
 public class FixedDepositAccount {
 
@@ -37,12 +54,28 @@ public class FixedDepositAccount {
 
 	// 고유 계좌 번호 (시작 번호)
 	private String no;
+	
+	  /**
+     * FixedDepositAccount 기본 생성자.
+     * <br>
+     * 적금 계좌 객체를 초기화합니다.
+     */
 
 	// 생성자 (초기화 작업)
 	public FixedDepositAccount() {
 		// 초기화 작업이 필요하면 여기에 추가
 	}
 	// 기존 코드 유지
+	
+	/**
+	 * 적금 계좌 개설을 실행합니다.
+	 * <p>
+	 * 1. 상품 선택, 금액 입력, 납부일 선택 등 사용자 입력을 처리합니다.
+	 * <p>
+	 * 2. 계좌 번호를 생성하고 고유 번호를 설정합니다.
+	 * <p>
+	 * 3. 계좌 정보를 파일에 저장합니다.
+	 */
 	public void fixedDepositAccount() {
 	    Scanner sc = new Scanner(System.in);
 
@@ -108,7 +141,13 @@ public class FixedDepositAccount {
 	    sc.nextLine(); // 사용자 입력을 기다림
 	    
 	}
-
+	
+	/**
+	 * 금액 입력을 받는 메서드입니다.
+	 * <p>
+	 * 사용자가 입력한 금액이 유효한지 검사하고, 유효하지 않으면 재입력을 받습니다.
+	 * @param sc 사용자 입력을 받는 Scanner 객체
+	 */
 
 	// 금액 입력 받는 메서드
 	private void getAmountInput(Scanner sc) {
